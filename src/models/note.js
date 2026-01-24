@@ -19,23 +19,31 @@ const noteSchema = new Schema(
       type: String,
       required: false,
       default: 'Todo',
-      enum: [
-        'Work',
-        'Personal',
-        'Meeting',
-        'Shopping',
-        'Ideas',
-        'Travel',
-        'Finance',
-        'Health',
-        'Important',
-        'Todo',
-      ],
+      // enum: [
+      //   'Work',
+      //   'Personal',
+      //   'Meeting',
+      //   'Shopping',
+      //   'Ideas',
+      //   'Travel',
+      //   'Finance',
+      //   'Health',
+      //   'Important',
+      //   'Todo',
+      // ],
     },
   },
   {
     timestamps: true,
     versionKey: false,
+  },
+);
+noteSchema.index(
+  { title: 'text', content: 'text', tag: 'text' },
+  {
+    name: 'NoteTextIndex',
+    weights: { title: 10, tag: 2 },
+    default_language: 'english',
   },
 );
 
