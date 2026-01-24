@@ -38,7 +38,6 @@ export const createNoteSchema = {
     }),
     tag: Joi.string()
       .valid(...TAGS)
-      .required()
       .messages({
         'any.only': `Tag must be one of: ${TAGS.join(', ')}`,
       }),
@@ -60,7 +59,6 @@ export const updateNoteSchema = {
     }),
     tag: Joi.string()
       .valid(...TAGS)
-      .required()
       .messages({
         'any.only': `Tag must be one of: ${TAGS.join(', ')}`,
       }),
