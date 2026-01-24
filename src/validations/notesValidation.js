@@ -12,7 +12,9 @@ export const getAllNotesSchema = {
 };
 
 const objectIdValidator = (value, helpers) => {
-  return !isValidObjectId(value) ? helpers.message('Invalid id format') : value;
+  return !isValidObjectId(value)
+    ? helpers.message(`Invalid ${value} format`)
+    : value;
 };
 
 export const noteIdSchema = {
@@ -45,7 +47,7 @@ export const createNoteSchema = {
 
 export const updateNoteSchema = {
   [Segments.BODY]: Joi.object({
-    title: Joi.string().min(1).required().messages({
+    title: Joi.string().min(1).messages({
       'string.base': 'Title must be a string',
       'string.min': 'Title should have at least {#limit} characters',
       'string.max': 'Title should have at most {#limit} characters',
