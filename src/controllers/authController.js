@@ -22,7 +22,7 @@ export const registerUser = async (req, res, next) => {
   const newSession = await createSession(newUser._id);
 
   setSessionCookies(res, newSession);
-  res.status(201).json({ existingUser });
+  res.status(201).json({ newUser });
 };
 
 export const loginUser = async (req, res, next) => {
