@@ -23,11 +23,11 @@ const userSchema = new Schema(
   { timestamps: true, versionKey: false },
 );
 
-userSchema.pre('save', function () {
+userSchema.pre('save', function (next) {
   if (!this.username) {
     this.username = this.email;
   }
-  // next();
+  next();
 });
 
 userSchema.methods.toJSON = function () {
